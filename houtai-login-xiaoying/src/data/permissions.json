@@ -1,0 +1,49 @@
+[
+  {
+  "username": "admin",
+  "password": "123456",
+  "menu": [{
+    "name": "导航一",
+    "path": "/",
+    "children": [{
+      "path": "/menutab",
+      "name": "Tab"
+    }]
+  },{
+    "name": "导航三",
+    "path": "/",
+    "children": [{
+      "path": "/progress",
+      "name": "Progress"
+    }]
+  }]
+}, {
+    "username": "vue",
+    "password": "111aaa",
+    "menu": [{
+      "name": "导航一",
+      "path": "/",
+      "children": [{
+        "path": "/menutab",
+        "name": "Tab"
+      }]
+    },{
+      "name": "导航二",
+      "path": "/",
+      "children": [{
+        "path": "/menutable",
+        "name": "Table"
+      }]
+    },{
+      "name": "导航三",
+      "path": "/",
+      "children": [{
+        "path": "/progress",
+        "name": "Progress"
+      }, {
+        "path": "/menuform",
+        "name": "Form"
+      }]
+    }]
+  }
+]
