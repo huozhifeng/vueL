@@ -1,0 +1,36 @@
+{
+  "name": "客户端",
+  "resources": [
+    {
+      "id": "cba62955646c4a489e2ca1442c786270",
+      "name": "商品-查询",
+      "summary": null,
+      "url": "/medications",
+      "method": "GET"
+    },
+    {
+      "id": "4028811a5e1820d9015e1824acf20000",
+      "name": "获取权限",
+      "summary": null,
+      "url": "/signin",
+      "method": "GET"
+    }
+  ],
+  "id": "2c9180895e172348015e188b362c0027",
+  "menus": [
+    {
+      "id": "2c9180895e172348015e1857eb460025",
+      "name": "商品管理",
+      "parent_id": null,
+      "route": "goods",
+      "summary": null
+    },
+    {
+      "id": "2c9180895e172348015e18586a980026",
+      "name": "商品信息",
+      "parent_id": "2c9180895e172348015e1857eb460025",
+      "route": "list",
+      "summary": null
+    }
+  ]
+}

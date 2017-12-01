@@ -2,29 +2,36 @@
   #app{display: table;width:100%;}
   .main-title{text-align: center;}
   .des{text-align: center;color:#999;margin-bottom: 2em;}
-  .login-form{width: 400px;margin:13% auto 0;}
+  .login-form{width: 400px;margin:13% auto 0;border: 1px solid #eaeaea;padding: 35px 48px 15px 6px;box-shadow: 0 0 25px #cac6c6}
   .login-page{background:#fff;}
 </style>
 <template>
   <div>
     <div class="g-center login-page" @keyup.enter="login">
-      <el-form class="login-form">
-        <h1 class="main-title">Vue-Access-Control</h1>
-        <p class="des">Frontend access control framework based Vue</p>
-        <el-form-item>
+      <el-form class="login-form" label-width="80px">
+        <h2 class="main-title">系统登录</h2>
+        <el-form-item label="身份">
+          <el-select id="identity" v-model="identity" placeholder="请选择" >
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="用户名">
           <el-input
             :autofocus="true"
-            placeholder="请输入账号"
+            placeholder="请输入用户名"
             v-model="username">
-            <template slot="prepend"><i class="el-icon-mobile-phone"></i></template>
           </el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item label="密码">
           <el-input
             placeholder="请输入密码"
             type="password"
             v-model="password">
-            <template slot="prepend"><i class="el-icon-info"></i></template>
           </el-input>
         </el-form-item>
         <el-form-item>
@@ -52,6 +59,11 @@ export default {
     return {
       username: '',
       password: '',
+      identity:'operator',
+      options:[
+        {value:"operator",label:"操作员"},
+        {value:"manager",label:"管理员"}
+      ],
       isBtnLoading: false
     };
   },
@@ -76,11 +88,11 @@ export default {
       let loginParams = {name: vm.username, password: vm.password};
       vm.isBtnLoading = true;
       requestLogin(loginParams).then(res => {
+        console.log(res);
         vm.isBtnLoading = false;
         if(res.data.token){
           util.session('token', res.data);
           console.log(vm.$router);
-          debugger
           vm.$emit('login', vm.$router.currentRoute.query.from);
         }else{
           return Promise.reject({
